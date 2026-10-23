@@ -1,59 +1,142 @@
-# 💊 MediCart – Online Pharmacy Ordering System
+# MediCart – Cloud-Based Online Pharmacy Ordering and Inventory Management System
 
-Browse pharmacy products and manage orders. Full-stack, cloud-ready.
+MediCart is a full-stack web application designed to simplify online pharmacy ordering and inventory management. Customers can browse medicines, search products, manage their shopping cart, place orders, and track order status. Administrators can manage products, monitor inventory, and process customer orders.
 
-| Layer    | Tech                                              |
-|----------|---------------------------------------------------|
-| Frontend | HTML, CSS, JavaScript, **React.js** (Vite)        |
-| Backend  | **Node.js + Express** REST API, JWT auth, bcrypt  |
-| Storage  | JSON-file database (no DB install needed)         |
-| Deploy   | Docker / Render / Railway / AWS / any VM          |
+The project demonstrates full-stack web development and cloud deployment using containerization and cloud hosting.
 
-## Features
-**Customers**
-- Browse products publicly, search, and filter by category
-- Prescription (℞) medicines are flagged; ordering them needs a prescription reference
-- Shopping cart with quantity control, stock-limited
-- Checkout with address, phone and payment method (pay on delivery)
-- "My Orders" with live status (Pending → Confirmed → Shipped → Delivered) and cancel for pending orders
+## 🌐 Live Demo
 
-**Admin**
-- Dashboard: orders, pending orders, revenue, products, low stock, customers
-- Manage orders: update status (cancelling restores stock automatically)
-- Manage products: add, edit price/stock, delete
+**[Visit MediCart – Live Application](https://medicart-pharmacy-system.onrender.com)**
 
-**Security/logic**: hashed passwords, JWT, admin-only routes, order totals and stock are
-calculated on the server (the browser can't change prices).
+## 📂 GitHub Repository
 
-## Run on your laptop (Windows / Mac / Linux)
-Requirements: **Node.js 18+** (https://nodejs.org)
+**[View Source Code on GitHub](https://github.com/muthukoornandini/medicart-pharmacy-system)**
+
+## ✨ Features
+
+### Customer Features
+- Browse medicines and view product details.
+- Search medicines and filter by category.
+- Register and log in securely.
+- Add medicines to the shopping cart.
+- Place orders with delivery details.
+- View order history and order status.
+- Cancel eligible pending orders.
+
+### Administrator Features
+- Add, update, and delete medicine products.
+- Manage inventory and stock availability.
+- View and manage customer orders.
+- Update order status.
+- Monitor dashboard statistics.
+
+### Cloud and Deployment Features
+- Containerized application using Docker.
+- Cloud deployment through Render.
+- Public access through a hosted web URL.
+- React frontend and Node.js backend served by the application.
+
+## 🛠️ Technologies Used
+
+| Component | Technology |
+|---|---|
+| Frontend | React.js, Vite |
+| Backend | Node.js, Express.js |
+| Authentication | JSON Web Tokens (JWT), bcryptjs |
+| API | REST API |
+| Containerization | Docker |
+| Cloud Hosting | Render |
+| Version Control | Git, GitHub |
+
+## 🏗️ System Architecture
+
+```text
+Customer / Administrator
+          |
+          v
+    React Frontend
+          |
+          v
+    Express REST API
+          |
+          v
+   Application Data Store
+          |
+          v
+    Docker Container
+          |
+          v
+     Render Cloud
+```
+
+## ⚙️ Run the Project Locally
+
+### Prerequisites
+- Node.js and npm
+- Git
+- Visual Studio Code (recommended)
+
+### 1. Clone the repository
 
 ```bash
-cd pharmacy-system
-cd server
-npm install
+git clone https://github.com/muthukoornandini/medicart-pharmacy-system.git
+cd medicart-pharmacy-system
+```
+
+### 2. Install dependencies and build the frontend
+
+```bash
+npm run setup
+```
+
+### 3. Configure environment variables
+
+Set a strong, private `JWT_SECRET` environment variable before running the application. Do not commit secrets to GitHub.
+
+### 4. Start the application
+
+```bash
 npm start
 ```
-Open **http://localhost:5000** (the React app is already built in `client/dist`).
 
-**Demo logins**
-- Customer: `customer@pharmacy.com` / `customer123`
-- Admin: `admin@pharmacy.com` / `admin123`
+Open **http://localhost:5000** in your browser.
 
-## Development mode (edit React code)
-Terminal 1: `cd server && npm install && npm start`
-Terminal 2: `cd client && npm install && npm run dev` → http://localhost:5173
-Rebuild for production after changes: `cd client && npm run build`
+## ☁️ Cloud Deployment
 
-## Deploy to the cloud
-```bash
-docker build -t medicart .
-docker run -p 5000:5000 -e JWT_SECRET=your-secret medicart
-```
-Render.com (free): push to GitHub → New Web Service → Runtime: Docker. Set `JWT_SECRET`.
-(Free tiers reset local files; use a managed DB for permanent data.)
+MediCart is deployed on Render using Docker. The deployment process builds the frontend, packages the application, and runs the Node.js server in the cloud.
 
-## API summary
-`POST /api/auth/register|login` · `GET /api/products` · `POST|PUT|DELETE /api/products` (admin) ·
-`POST /api/orders` · `GET /api/orders/me` · `PUT /api/orders/:id/cancel` ·
-`GET /api/orders` (admin) · `PUT /api/orders/:id/status` (admin) · `GET /api/stats` (admin) · `GET /api/health`
+- **Live application:** https://medicart-pharmacy-system.onrender.com
+- **Source repository:** https://github.com/muthukoornandini/medicart-pharmacy-system
+
+**Note:** Persistent cloud database storage should be configured and verified separately if the application needs to retain orders, users, and inventory across service restarts or redeployments.
+
+## 🎯 Project Objectives
+
+- Demonstrate cloud hosting and application deployment.
+- Develop a full-stack online ordering application.
+- Implement authentication and role-based access.
+- Provide basic medicine catalogue and inventory management.
+- Demonstrate REST API integration and Docker-based deployment.
+
+## 🔮 Future Enhancements
+
+- Integrate a managed cloud database such as PostgreSQL.
+- Add automated backups and persistent data storage.
+- Implement prescription verification workflows.
+- Add email or SMS order notifications.
+- Improve audit logging, monitoring, and security.
+- Add automated testing and CI/CD workflows.
+
+## 🔐 Disclaimer
+
+MediCart is an educational project intended for demonstration purposes. It is not a substitute for a licensed pharmacy service. Real-world deployment would require appropriate prescription verification, regulatory compliance, privacy safeguards, and secure handling of customer information.
+
+## 👩‍💻 Developer
+
+**Muthukoornandini**
+
+GitHub: [@muthukoornandini](https://github.com/muthukoornandini)
+
+---
+
+*Built to demonstrate full-stack development, containerization, and cloud deployment.*
